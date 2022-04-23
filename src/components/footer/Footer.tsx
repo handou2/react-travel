@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./Footer.module.scss";
 import { Layout, Typography } from "antd";
 
-export const Footer: React.FC = () => {
+export default function Footer() {
   return (
     <div>
       <Layout.Footer>
@@ -12,4 +12,4 @@ export const Footer: React.FC = () => {
       </Layout.Footer>
     </div>
   );
-};
+}

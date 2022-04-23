@@ -4,7 +4,7 @@ import logo from "../../assets/logo.svg";
 import { Layout, Typography, Input, Menu, Button, Dropdown } from "antd";
 import { GlobalOutlined } from "@ant-design/icons";
 
-export const Header: React.FC = () => {
+export default function Header() {
   return (
     <div>
       {" "}
@@ -62,4 +62,4 @@ export const Header: React.FC = () => {
       </div>
     </div>
   );
-};
+}
