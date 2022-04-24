@@ -1,7 +1,6 @@
 import React from "react";
 import styles from "./ProductCollection.module.scss";
-import { Row, Col, Typography, Divider } from "antd";
-import { GifOutlined } from "@ant-design/icons";
+import { Row, Col, Divider } from "antd";
 
 import ProductImage from "./ProductImage";
 interface PropsType {

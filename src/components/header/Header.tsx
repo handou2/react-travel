@@ -3,8 +3,34 @@ import styles from "./Header.module.scss";
 import logo from "../../assets/logo.svg";
 import { Layout, Typography, Input, Menu, Button, Dropdown } from "antd";
 import { GlobalOutlined } from "@ant-design/icons";
+import store from "../../redux/store";
+import {
+  useNavigate,
+  useLocation,
+  useParams,
+  useSearchParams,
+} from "react-router-dom";
 
+interface State {
+  language: "zh" | "en";
+}
 export default function Header() {
+  const navigate = useNavigate();
+  const location = useLocation();
+  // const {id} = location.state;
+  const params = useParams();
+  const [searchParams] = useSearchParams();
+  const navigateToRegister = () => {
+    navigate(`register`);
+  };
+  const navigateToSignIn = () => {
+    navigate(`signIn`);
+  };
+  const navigateToHome = () => {
+    navigate(`/`);
+  };
+  const storeState = store.getState();
+  // storeState.language
   return (
     <div>
       {" "}
@@ -26,16 +52,18 @@ export default function Header() {
               语言
             </Dropdown.Button>
             <div className={styles["button-group"]}>
-              <Button>注册</Button>
-              <Button>登陆</Button>
+              <Button onClick={() => navigateToRegister()}>注册</Button>
+              <Button onClick={() => navigateToSignIn()}>登陆</Button>
             </div>
           </div>
         </div>
         <Layout.Header className={styles["main-header"]}>
-          <img src={logo} alt="logo" className={styles["App-logo"]} />
-          <Typography.Title level={3} className={styles.title}>
-            React旅游网
-          </Typography.Title>
+          <span onClick={() => navigateToHome()}>
+            <img src={logo} alt="logo" className={styles["App-logo"]} />
+            <Typography.Title level={3} className={styles.title}>
+              React旅游网
+            </Typography.Title>
+          </span>
           <Input.Search
             placeholder={"请输入旅游目的地、主题、或关键字"}
             className={styles["search-input"]}

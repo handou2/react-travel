@@ -1,5 +1,6 @@
 import React from "react";
 import { Image, Typography } from "antd";
+import { Link } from "react-router-dom";
 interface PropsType {
   id: string | number;
   size: "large" | "small";
@@ -15,7 +16,7 @@ export default function ProductImage({
   title,
 }: PropsType) {
   return (
-    <div>
+    <Link to={`detail/${id}`}>
       {size === "large" ? (
         <Image src={imageSrc} height={285} width={490} />
       ) : (
@@ -27,6 +28,6 @@ export default function ProductImage({
           ¥ {price} 起
         </Typography.Text>
       </div>
-    </div>
+    </Link>
   );
 }
