@@ -1,6 +1,6 @@
 import React from "react";
 import Footer from "../../components/footer/Footer";
-import { Header } from "../../components/header/Header.class";
+import Header from "../../components/header/Header";
 import SideMenu from "../../components/sideMenu/SideMenu";
 import Carousel from "../../components/carousel/Carousel";
 import ProductCollection from "../../components/productCollection/ProductCollection";
@@ -17,7 +17,17 @@ import styles from "./HomePage.module.scss";
 //行布局和列布局
 import { Row, Col, Typography } from "antd";
 import { withTranslation, WithTranslation } from "react-i18next";
+
+interface State {
+  productList: any[];
+}
 class HomePageComponent extends React.Component<WithTranslation> {
+  constructor(props) {
+    super(props);
+    this.state = {
+      productList: [],
+    };
+  }
   render() {
     const { t } = this.props;
     return (
@@ -36,7 +46,7 @@ class HomePageComponent extends React.Component<WithTranslation> {
           <ProductCollection
             title={
               <Typography.Title level={3} type="warning">
-                爆款推荐
+                {t("home_page.hot_recommended")}
               </Typography.Title>
             }
             sideImage={sideImage}
@@ -45,7 +55,7 @@ class HomePageComponent extends React.Component<WithTranslation> {
           <ProductCollection
             title={
               <Typography.Title level={3} type="warning">
-                新品上市
+                {t("home_page.new_arrival")}
               </Typography.Title>
             }
             sideImage={sideImage2}
@@ -54,7 +64,7 @@ class HomePageComponent extends React.Component<WithTranslation> {
           <ProductCollection
             title={
               <Typography.Title level={3} type="warning">
-                国内游推荐
+                {t("home_page.domestic_travel")}
               </Typography.Title>
             }
             sideImage={sideImage3}
