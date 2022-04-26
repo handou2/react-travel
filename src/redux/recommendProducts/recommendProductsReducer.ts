@@ -1,8 +1,8 @@
 import {
-  RecommendProductsAction,
+  FETCH_RECOMMEND_PRODUCTS_FAIL,
   FETCH_RECOMMEND_PRODUCTS_START,
   FETCH_RECOMMEND_PRODUCTS_SUCCESS,
-  FETCH_RECOMMEND_PRODUCTS_FAIL,
+  RecommendProductAction,
 } from "./recommendProductsActions";
 
 interface RecommendProductsState {
@@ -10,12 +10,14 @@ interface RecommendProductsState {
   loading: boolean;
   error: string | null;
 }
+
 const defaultState: RecommendProductsState = {
   loading: true,
   error: null,
   productList: [],
 };
-export default (state = defaultState, action: RecommendProductsAction) => {
+
+export default (state = defaultState, action: RecommendProductAction) => {
   switch (action.type) {
     case FETCH_RECOMMEND_PRODUCTS_START:
       return { ...state, loading: true };

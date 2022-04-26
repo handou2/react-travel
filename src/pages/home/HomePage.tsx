@@ -19,16 +19,31 @@ import { Row, Col, Typography, Spin } from "antd";
 import { withTranslation, WithTranslation } from "react-i18next";
 import axios from "axios";
 import { connect } from "react-redux";
-
+import { RootState } from "../../redux/store";
+import { giveMeDataActionCreator } from "../../redux/recommendProducts/recommendProductsActions";
 interface State {
   loading: boolean;
   error: string | null;
   productList: any[];
 }
-// const mapStateToProps = (state:RootState)=>{
-
-// }
-class HomePageComponent extends React.Component<WithTranslation, State> {
+const mapStateToProps = (state: RootState) => {
+  return {
+    loading: state.recommendProducts.loading,
+    error: state.recommendProducts.error,
+    productList: state.recommendProducts.productList,
+  };
+};
+const mapDispatchToProps = (dispatch) => {
+  return {
+    giveMeData: () => {
+      dispatch(giveMeDataActionCreator());
+    },
+  };
+};
+type PropsType = WithTranslation &
+  ReturnType<typeof mapStateToProps> &
+  ReturnType<typeof mapDispatchToProps>;
+class HomePageComponent extends React.Component<PropsType> {
   // constructor(props) {
   // super(props);
   // this.state = {
@@ -37,25 +52,11 @@ class HomePageComponent extends React.Component<WithTranslation, State> {
   //   productList: [],
   // };
   // }
-  async componentDidMount() {
-    try {
-      const { data } = await axios.get(
-        "http://123.56.149.216:8080/api/productCollections"
-      );
-      this.setState({
-        loading: false,
-        error: null,
-        productList: data,
-      });
-    } catch (error) {
-      this.setState({
-        // error: error.message,
-        loading: false,
-      });
-    }
+  componentDidMount() {
+    this.props.giveMeData();
   }
   render() {
-    const { t } = this.props;
+    const { t, productList, loading, error } = this.props;
     // const { productList, loading, error } = this.state;
     // if (loading) {
     //   return (
@@ -124,4 +125,7 @@ class HomePageComponent extends React.Component<WithTranslation, State> {
     );
   }
 }
-export const HomePage = withTranslation()(HomePageComponent);
+export const HomePage = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withTranslation()(HomePageComponent));
