@@ -1,4 +1,4 @@
-import styles from "./ProductIntro.module.css";
+import styles from "./ProductIntro.module.scss";
 import React from "react";
 import { Typography, Carousel, Image, Rate, Table } from "antd";
 import { ColumnsType } from "antd/es/table";

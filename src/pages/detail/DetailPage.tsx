@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import { Spin, Row, Col, DatePicker } from "antd";
+import { Spin, Row, Col, DatePicker, Divider, Typography } from "antd";
 import Header from "../../components/header/Header";
 import Footer from "../../components/footer/Footer";
 import styles from "./DetailPage.module.scss";
@@ -22,7 +22,7 @@ export default function DetailPage() {
       setLoading(true);
       try {
         const { data } = await axios.get(
-          "http://123.56.149.216:8080/api/touristRoutes/${touristRouteId}"
+          `http://123.56.149.216:8080/api/touristRoutes/${touristRouteId}`
         );
         setProduct(data);
         setLoading(false);
@@ -76,13 +76,45 @@ export default function DetailPage() {
         {/* 锚点菜单 */}
         <div className={styles["product-detail-anchor"]}></div>
         {/* 产品特色 */}
-        <div id="feature" className={styles["product-detail-container"]}></div>
+        <div id="feature" className={styles["product-detail-container"]}>
+          <Divider orientation={"center"}>
+            <Typography.Title level={3}>产品特色</Typography.Title>
+          </Divider>
+          <div
+            dangerouslySetInnerHTML={{ __html: product.features }}
+            style={{ margin: 50 }}
+          ></div>
+        </div>
         {/* 费用 */}
-        <div id="fees" className={styles["product-detail-container"]}></div>
+        <div id="fees" className={styles["product-detail-container"]}>
+          <Divider orientation={"center"}>
+            <Typography.Title level={3}>费用</Typography.Title>
+          </Divider>
+          <div
+            dangerouslySetInnerHTML={{ __html: product.features }}
+            style={{ margin: 50 }}
+          ></div>
+        </div>
         {/* 预订须知 */}
-        <div id="notes" className={styles["product-detail-container"]}></div>
+        <div id="notes" className={styles["product-detail-container"]}>
+          <Divider orientation={"center"}>
+            <Typography.Title level={3}>预订须知</Typography.Title>
+          </Divider>
+          <div
+            dangerouslySetInnerHTML={{ __html: product.features }}
+            style={{ margin: 50 }}
+          ></div>
+        </div>
         {/* 商品评价*/}
-        <div id="comments" className={styles["product-detail-container"]}></div>
+        <div id="comments" className={styles["product-detail-container"]}>
+          <Divider orientation={"center"}>
+            <Typography.Title level={3}>商品评价</Typography.Title>
+          </Divider>
+          <div
+            dangerouslySetInnerHTML={{ __html: product.features }}
+            style={{ margin: 50 }}
+          ></div>
+        </div>
       </div>
       <Footer />
     </div>

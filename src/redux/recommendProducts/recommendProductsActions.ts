@@ -66,7 +66,7 @@ export const giveMeDataActionCreator =
       console.log(data);
 
       dispatch(fetchRecommendProductSuccessActionCreator(data));
-    } catch (error) {
-      // dispatch(fetchRecommendProductFailActionCreator(error.message));
+    } catch (error: any) {
+      dispatch(fetchRecommendProductFailActionCreator(error.message));
     }
   };
