@@ -57,7 +57,6 @@ class HomePageComponent extends React.Component<PropsType> {
   }
   render() {
     const { t, productList, loading, error } = this.props;
-    // const { productList, loading, error } = this.state;
     // if (loading) {
     //   return (
     //     <Spin
@@ -129,3 +128,4 @@ export const HomePage = connect(
   mapStateToProps,
   mapDispatchToProps
 )(withTranslation()(HomePageComponent));
+
