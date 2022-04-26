@@ -18,12 +18,16 @@ import styles from "./HomePage.module.scss";
 import { Row, Col, Typography, Spin } from "antd";
 import { withTranslation, WithTranslation } from "react-i18next";
 import axios from "axios";
+import { connect } from "react-redux";
 
 interface State {
   loading: boolean;
   error: string | null;
   productList: any[];
 }
+// const mapStateToProps = (state:RootState)=>{
+
+// }
 class HomePageComponent extends React.Component<WithTranslation, State> {
   // constructor(props) {
   // super(props);

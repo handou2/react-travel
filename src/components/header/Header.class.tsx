@@ -16,8 +16,8 @@ import { Dispatch } from "redux";
 interface State extends LanguageState {}
 const mapStateToProps = (state: RootState) => {
   return {
-    language: state.language,
-    languageList: state.languageList,
+    language: state.language.language,
+    languageList: state.language.languageList,
   };
 };
 const mapDispatchToProps = (dispatch: Dispatch) => {
@@ -40,8 +40,8 @@ class HeaderComponnet extends React.Component<
   handleStoreChange = () => {
     const storeState = store.getState();
     this.setState({
-      language: storeState.language,
-      languageList: storeState.languageList,
+      language: storeState.language.language,
+      languageList: storeState.language.languageList,
     });
   };
   menuClickHandler = (e) => {
