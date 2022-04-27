@@ -1,11 +1,22 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import { Spin, Row, Col, DatePicker, Divider, Typography } from "antd";
+import {
+  Spin,
+  Row,
+  Col,
+  DatePicker,
+  Divider,
+  Typography,
+  Anchor,
+  Menu,
+} from "antd";
 import Header from "../../components/header/Header";
 import Footer from "../../components/footer/Footer";
 import styles from "./DetailPage.module.scss";
 import { ProductIntro } from "../../components/productIntro/ProductIntro";
+import ProductComments from "../../components/ProductComments/ProductComments";
+import { commentMockData } from "./mockup";
 const { RangePicker } = DatePicker;
 // interface MatchParams {
 //   touristRouteId: string;
@@ -74,7 +85,22 @@ export default function DetailPage() {
           </Row>
         </div>
         {/* 锚点菜单 */}
-        <div className={styles["product-detail-anchor"]}></div>
+        <Anchor className={styles["product-detail-anchor"]}>
+          <Menu mode="horizontal">
+            <Menu.Item key="1">
+              <Anchor.Link href="#feature" title="产品特色"></Anchor.Link>
+            </Menu.Item>
+            <Menu.Item key="3">
+              <Anchor.Link href="#fees" title="费用"></Anchor.Link>
+            </Menu.Item>
+            <Menu.Item key="4">
+              <Anchor.Link href="#notes" title="预订须知"></Anchor.Link>
+            </Menu.Item>
+            <Menu.Item key="5">
+              <Anchor.Link href="#comments" title="用户评价"></Anchor.Link>
+            </Menu.Item>
+          </Menu>
+        </Anchor>
         {/* 产品特色 */}
         <div id="feature" className={styles["product-detail-container"]}>
           <Divider orientation={"center"}>
@@ -110,10 +136,9 @@ export default function DetailPage() {
           <Divider orientation={"center"}>
             <Typography.Title level={3}>商品评价</Typography.Title>
           </Divider>
-          <div
-            dangerouslySetInnerHTML={{ __html: product.features }}
-            style={{ margin: 50 }}
-          ></div>
+          <div style={{ margin: 40 }}>
+            <ProductComments data={commentMockData} />
+          </div>
         </div>
       </div>
       <Footer />
