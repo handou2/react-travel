@@ -17,32 +17,26 @@ import styles from "./DetailPage.module.scss";
 import { ProductIntro } from "../../components/productIntro/ProductIntro";
 import ProductComments from "../../components/ProductComments/ProductComments";
 import { commentMockData } from "./mockup";
+import { useSelector } from "../../redux/hooks";
+import { useDispatch } from "react-redux";
+import {
+  productDetailSlice,
+  getProductDetail,
+} from "../../redux/productDetail/slice";
+
 const { RangePicker } = DatePicker;
-// interface MatchParams {
-//   touristRouteId: string;
+
+// interface MatchParams{
+//   touristRouteId:string
 // }
 export default function DetailPage() {
-  const params = useParams();
+  const loading = useSelector((state) => state.productDetail.loading);
+  const error = useSelector((state) => state.productDetail.error);
+  const product = useSelector((state) => state.productDetail.data);
   const { touristRouteId } = useParams<string>();
-  const [loading, setLoading] = useState<boolean>(true);
-  const [product, setProduct] = useState<any>(null);
-  const [error, setError] = useState<string | null>(null);
-  // console.log(params);
+  const dispatch = useDispatch();
   useEffect(() => {
-    const fetchData = async () => {
-      setLoading(true);
-      try {
-        const { data } = await axios.get(
-          `http://123.56.149.216:8080/api/touristRoutes/${touristRouteId}`
-        );
-        setProduct(data);
-        setLoading(false);
-      } catch (error: any) {
-        setError(error.message);
-        setLoading(false);
-      }
-    };
-    fetchData();
+    // dispatch(getProductDetail(touristRouteId))
   }, []);
   if (loading) {
     return (
