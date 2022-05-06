@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./App.module.scss";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { HomePage } from "./pages/home/HomePage";
-import SignIn from "./pages/signIn/SignIn";
+import { SignIn } from "./pages/signIn/SignIn";
 import NotFound from "./pages/NotFound";
 import { RegisterPage } from "./pages/register/RegisterPage";
 import DetailPage from "./pages/detail/DetailPage";

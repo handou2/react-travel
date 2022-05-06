@@ -1,6 +1,10 @@
 import React from "react";
-
-export default function SignIn(props) {
-  console.log(props);
-  return <div>d登录</div>;
-}
+import { UserLayout } from "../../layouts/userLayout";
+import { SignForm } from "./SignForm";
+export const SignIn = (props) => {
+  return (
+    <UserLayout>
+      <SignForm />
+    </UserLayout>
+  );
+};
