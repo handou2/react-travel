@@ -39,6 +39,9 @@ export default function Header() {
   const navigateToHome = () => {
     navigate(`/`);
   };
+  const navigateToSearch = (keywords: any) => {
+    navigate(`/search/${keywords}`);
+  };
   // storeState.language
   return (
     <div>
@@ -89,6 +92,7 @@ export default function Header() {
           <Input.Search
             placeholder={"请输入旅游目的地、主题、或关键字"}
             className={styles["search-input"]}
+            onSearch={(keywords) => navigateToSearch(keywords)}
           />
         </Layout.Header>
         <Menu mode={"horizontal"} className={styles["main-menu"]}>
