@@ -6,6 +6,7 @@ import SignIn from "./pages/signIn/SignIn";
 import NotFound from "./pages/NotFound";
 import RegisterPage from "./pages/register/RegisterPage";
 import DetailPage from "./pages/detail/DetailPage";
+import { SearchPage } from "./pages/search/SearchPage";
 function App() {
   return (
     <div className={styles.App}>
@@ -15,6 +16,7 @@ function App() {
           <Route path="/signIn" element={<SignIn />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/detail/:touristRouteId" element={<DetailPage />} />
+          <Route path="/search/:keywords?" element={<SearchPage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
