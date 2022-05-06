@@ -4,7 +4,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { HomePage } from "./pages/home/HomePage";
 import SignIn from "./pages/signIn/SignIn";
 import NotFound from "./pages/NotFound";
-import RegisterPage from "./pages/register/RegisterPage";
+import { RegisterPage } from "./pages/register/RegisterPage";
 import DetailPage from "./pages/detail/DetailPage";
 import { SearchPage } from "./pages/search/SearchPage";
 function App() {

@@ -1,4 +1,4 @@
-import styles from "./SearchPage.module.css";
+import styles from "./SearchPage.module.scss";
 import React, { useEffect } from "react";
 import { FilterArea, ProductList } from "../../components";
 import Header from "../../components/header/Header";

@@ -16,13 +16,13 @@ export const Filter: React.FC<PropsType> = ({ title, tags }) => {
       </Text>
       {tags.map((t, index) => {
         if (index === tags.length - 1)
-          return <FilterTag key={`filter${index}`}>{t}</FilterTag>;
-        return (
-          <span key={`filter${index}`}>
-            <FilterTag>{t}</FilterTag>
-            <Divider type="vertical" />
-          </span>
-        );
+          // return <FilterTag key={`filter${index}`}>{t}</FilterTag>;
+          return (
+            <span key={`filter${index}`}>
+              {/* <FilterTag>{t}</FilterTag> */}
+              <Divider type="vertical" />
+            </span>
+          );
       })}
     </div>
   );
