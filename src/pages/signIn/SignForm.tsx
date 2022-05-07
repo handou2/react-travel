@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Form, Input, Button, Checkbox } from "antd";
 import styles from "./SignForm.module.scss";
 import axios from "axios";
+import { useSelector } from "../../redux/hooks";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { signIn } from "../../redux/user/slice";
 
 const layout = {
   labelCol: { span: 8 },
@@ -11,16 +15,29 @@ const tailLayout = {
   wrapperCol: { offset: 8, span: 16 },
 };
 export const SignForm = () => {
-  const onFinish = async (values: any) => {
-    await axios.post("http://123.56.149.216:8080/auth/register", {
-      email: values.username,
-      password: values.password,
-    });
+  const loading = useSelector((state) => state.user.loading);
+  const error = useSelector((state) => state.user.error);
+  const jwt = useSelector((state) => state.user.token);
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (jwt !== null) {
+      navigate("/");
+    }
+  }, [jwt]);
+
+  const onFinish = (values) => {
+    // dispatch(
+    //   signIn({
+    //     email: values.username,
+    //     password: values.password,
+    //   })
+    // );
   };
 
-  const onFinishFailed = (errorInfo: any) => {
-    console.log("Failed:", errorInfo);
-  };
+  const onFinishFailed = (errorInfo: any) => {};
   return (
     <Form
       {...layout}
@@ -56,7 +73,7 @@ export const SignForm = () => {
       </Form.Item>
 
       <Form.Item {...tailLayout}>
-        <Button type="primary" htmlType="submit">
+        <Button type="primary" htmlType="submit" loading={loading}>
           Submit
         </Button>
       </Form.Item>
