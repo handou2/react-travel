@@ -63,8 +63,6 @@ export const giveMeDataActionCreator =
       const { data } = await axios.get(
         "http://123.56.149.216:8080/api/productCollections"
       );
-      console.log(data);
-
       dispatch(fetchRecommendProductSuccessActionCreator(data));
     } catch (error: any) {
       dispatch(fetchRecommendProductFailActionCreator(error.message));

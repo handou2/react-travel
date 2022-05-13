@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import { stat } from "fs";
 
 interface UserState {
   loading: boolean;
@@ -33,7 +34,13 @@ export const signIn = createAsyncThunk(
 export const userSlice = createSlice({
   name: "user",
   initialState,
-  reducers: {},
+  reducers: {
+    logOut: (state) => {
+      state.token = null;
+      state.error = null;
+      state.loading = false;
+    },
+  },
   extraReducers: {
     [signIn.pending.type]: (state) => {
       state.loading = true;

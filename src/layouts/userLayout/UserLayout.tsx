@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./UserLayout.module.css";
+import styles from "./UserLayout.module.scss";
 import logo from "../../assets/logo.svg";
 import { Link } from "react-router-dom";
 import { CaretDownOutlined } from "@ant-design/icons";
@@ -38,9 +38,6 @@ export const UserLayout = (props) => {
               <img alt="logo" className={styles["logo"]} src={logo} />
               <span className={styles["title"]}>React 旅游网</span>
             </Link>
-          </div>
-          <div className={styles["desc"]}>
-            慕课网 是我朝最具影响力的 线上课程学习网站
           </div>
           {props.children}
         </div>
