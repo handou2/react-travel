@@ -1,7 +1,6 @@
 import React from "react";
 import styles from "./MainLayout.module.css";
-import Header from "../../components/header/Header";
-import Footer from "../../components/footer/Footer";
+import { Header, Footer } from "../../components";
 export const MainLayout: React.FC = ({}) => {
   return (
     <>

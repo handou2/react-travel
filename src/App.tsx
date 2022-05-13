@@ -5,7 +5,7 @@ import { HomePage } from "./pages/home/HomePage";
 import { SignIn } from "./pages/signIn/SignIn";
 import NotFound from "./pages/NotFound";
 import { RegisterPage } from "./pages/register/RegisterPage";
-import DetailPage from "./pages/detail/DetailPage";
+import { DetailPage } from "./pages/detail/DetailPage";
 import { SearchPage } from "./pages/search/SearchPage";
 function App() {
   return (

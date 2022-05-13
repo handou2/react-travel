@@ -8,13 +8,13 @@ interface PropsType {
   title: string;
   imageSrc: string;
 }
-export default function ProductImage({
+export const ProductImage = ({
   id,
   size,
   imageSrc,
   price,
   title,
-}: PropsType) {
+}: PropsType) => {
   return (
     <Link to={`detail/${id}`}>
       {size === "large" ? (
@@ -30,4 +30,4 @@ export default function ProductImage({
       </div>
     </Link>
   );
-}
+};

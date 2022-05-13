@@ -14,7 +14,7 @@ const companies = [
   { src: image4, title: "Facebook" },
 ];
 
-export default function BusinessPartners() {
+export const BusinessPartners = () => {
   return (
     <div className={styles.content}>
       <Divider orientation="left">
@@ -38,4 +38,4 @@ export default function BusinessPartners() {
       </Row>
     </div>
   );
-}
+};

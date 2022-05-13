@@ -4,7 +4,7 @@ import { sideMenuList } from "./mockup";
 import { Menu } from "antd";
 import { GifOutlined } from "@ant-design/icons";
 
-export default function SideMenu() {
+export const SideMenu = () => {
   return (
     <Menu mode="vertical" className={styles["side-menu"]}>
       {sideMenuList.map((m, index) => (
@@ -41,4 +41,4 @@ export default function SideMenu() {
       ))}
     </Menu>
   );
-}
+};

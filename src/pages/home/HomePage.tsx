@@ -1,18 +1,12 @@
 import React from "react";
-import Footer from "../../components/footer/Footer";
-import Header from "../../components/header/Header";
-import SideMenu from "../../components/sideMenu/SideMenu";
-import Carousel from "../../components/carousel/Carousel";
-import ProductCollection from "../../components/productCollection/ProductCollection";
-import BusinessPartners from "../../components/businessPartners/BusinessPartners";
 import {
-  productList1,
-  productList2,
-  productList3,
-} from "../../pages/home/mockups";
-import sideImage from "../../assets/images/sider_2019_02-04-2.png";
-import sideImage2 from "../../assets/images/sider_2019_02-04.png";
-import sideImage3 from "../../assets/images/sider_2019_12-09.png";
+  Footer,
+  Header,
+  SideMenu,
+  Carousel,
+  BusinessPartners,
+  ProductCollection,
+} from "../../components";
 import styles from "./HomePage.module.scss";
 //行布局和列布局
 import { Row, Col, Typography, Spin } from "antd";

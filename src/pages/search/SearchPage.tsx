@@ -1,8 +1,6 @@
 import styles from "./SearchPage.module.scss";
 import React, { useEffect } from "react";
-import { FilterArea, ProductList } from "../../components";
-import Header from "../../components/header/Header";
-import Footer from "../../components/footer/Footer";
+import { FilterArea, ProductList, Header, Footer } from "../../components";
 import { useParams, useLocation } from "react-router-dom";
 import { Spin } from "antd";
 import { searchProduct } from "../../redux/productSearch/slice";
@@ -13,7 +11,7 @@ interface MatchParams {
   keywords: string;
 }
 
-export const SearchPage: React.FC = () => {
+export const SearchPage = () => {
   //   const { keywords } = useParams<MatchParams>();
 
   const loading = useSelector((state) => state.productSearch.loading);
@@ -24,13 +22,13 @@ export const SearchPage: React.FC = () => {
   const dispatch = useDispatch();
   const location = useLocation();
 
-  //   useEffect(() => {
-  //     dispatch(searchProduct({ nextPage: 1, pageSize: 10, keywords }));
-  //   }, [location]);
+  // useEffect(() => {
+  //   dispatch(searchProduct({ nextPage: 1, pageSize: 10, keywords }));
+  // }, [location]);
 
-  //   const onPageChange = (nextPage, pageSize) => {
-  //     dispatch(searchProduct({ nextPage, pageSize, keywords }));
-  //   };
+  // const onPageChange = (nextPage, pageSize) => {
+  //   dispatch(searchProduct({ nextPage, pageSize, keywords }));
+  // };
 
   if (loading) {
     return (

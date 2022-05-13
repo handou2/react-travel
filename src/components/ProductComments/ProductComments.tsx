@@ -2,6 +2,7 @@ import { List, Comment, Tooltip } from "antd";
 import React from "react";
 import styles from "./ProductComments.module.scss";
 
+// 数组类型定义
 interface PropsType {
   data: {
     author: string;
@@ -10,7 +11,7 @@ interface PropsType {
     createDate: string;
   }[];
 }
-export default function ProductComments({ data }: PropsType) {
+export const ProductComments = ({ data }: PropsType) => {
   return (
     <div>
       <List
@@ -31,4 +32,4 @@ export default function ProductComments({ data }: PropsType) {
       />
     </div>
   );
-}
+};

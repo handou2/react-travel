@@ -4,7 +4,7 @@ import styles from "./Carousel.module.scss";
 import carouselImage1 from "../../assets/images/carousel_1.jpg";
 import carouselImage2 from "../../assets/images/carousel_2.jpg";
 import carouselImage3 from "../../assets/images/carousel_3.jpg";
-export default function Carousel() {
+export const Carousel = () => {
   return (
     <div>
       <AntCarousel autoplay className={styles.slider}>
@@ -14,4 +14,4 @@ export default function Carousel() {
       </AntCarousel>
     </div>
   );
-}
+};

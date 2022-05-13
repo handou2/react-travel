@@ -3,7 +3,7 @@ import styles from "./Footer.module.scss";
 import { Layout, Typography } from "antd";
 import { useTranslation, withTranslation } from "react-i18next";
 
-export default function Footer() {
+export const Footer = () => {
   const { t } = useTranslation();
   return (
     <div>
@@ -14,4 +14,4 @@ export default function Footer() {
       </Layout.Footer>
     </div>
   );
-}
+};

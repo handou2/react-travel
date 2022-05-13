@@ -15,7 +15,7 @@ import { useTranslation } from "react-i18next";
 interface State {
   language: "zh" | "en";
 }
-export default function Header() {
+export const Header = () => {
   const navigate = useNavigate();
   // const {id} = location.state;
   const language = useSelector((state) => state.language.language);
@@ -116,4 +116,4 @@ export default function Header() {
       </div>
     </div>
   );
-}
+};

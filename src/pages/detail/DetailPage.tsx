@@ -11,11 +11,13 @@ import {
   Anchor,
   Menu,
 } from "antd";
-import Header from "../../components/header/Header";
-import Footer from "../../components/footer/Footer";
+import {
+  Header,
+  Footer,
+  ProductComments,
+  ProductIntro,
+} from "../../components";
 import styles from "./DetailPage.module.scss";
-import { ProductIntro } from "../../components/productIntro/ProductIntro";
-import ProductComments from "../../components/ProductComments/ProductComments";
 import { commentMockData } from "./mockup";
 import { useSelector } from "../../redux/hooks";
 import { useDispatch } from "react-redux";
@@ -29,7 +31,7 @@ const { RangePicker } = DatePicker;
 // interface MatchParams{
 //   touristRouteId:string
 // }
-export default function DetailPage() {
+export const DetailPage = () => {
   const loading = useSelector((state) => state.productDetail.loading);
   const error = useSelector((state) => state.productDetail.error);
   const product = useSelector((state) => state.productDetail.data);
@@ -110,6 +112,7 @@ export default function DetailPage() {
           <Divider orientation={"center"}>
             <Typography.Title level={3}>费用</Typography.Title>
           </Divider>
+          {/* html注入 */}
           <div
             dangerouslySetInnerHTML={{ __html: product.features }}
             style={{ margin: 50 }}
@@ -138,4 +141,4 @@ export default function DetailPage() {
       <Footer />
     </div>
   );
-}
+};

@@ -2,17 +2,17 @@ import React from "react";
 import styles from "./ProductCollection.module.scss";
 import { Row, Col, Divider } from "antd";
 
-import ProductImage from "./ProductImage";
+import { ProductImage } from "./ProductImage";
 interface PropsType {
   title: JSX.Element;
   sideImage: string;
   products: any[];
 }
-export default function ProductCollection({
+export const ProductCollection = ({
   title,
   sideImage,
   products,
-}: PropsType) {
+}: PropsType) => {
   return (
     <div className={styles.content}>
       <Divider orientation="left">{title}</Divider>
@@ -116,4 +116,4 @@ export default function ProductCollection({
       </Row>
     </div>
   );
-}
+};
