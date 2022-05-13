@@ -1,46 +1,51 @@
-# Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
 ## Available Scripts
 
 In the project directory, you can run:
 
 ### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+启动项目前别忘了安装依赖: `npm i`
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### `React旅游网`
 
-### `npm test`
+安装各种包哈哈.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+因为我们需要模块化添加样式,本项目采用 sass.
 
-### `npm run build`
+npm 命令:`npm i sass`.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+下一步:安装我们的样式文件.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+antd:`npm add antd` (别忘了在 src/App.css 文件顶部引入 `@import '~antd/dist/antd.css';`).
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+我们看到 antd 里面还有一些高级配置:自定义主题 本项目就不再配置,采用默认主题.
 
-### `npm run eject`
+好的现在来看一下本项目的架构:.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+```
+--src
+    ---components(这里放我们的组件)
+    ---pages(这里放我们的页面)
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+我们采用 React Router v6
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+```
+npm install react-router-dom
+```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+安装 redux: `npm install redux --save.`
 
-## Learn More
+安装 axios: `npm i axios.`
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+这里有个小技巧:  
+component 和 page,为了避免引入组件和页面造成过多杂乱代码的问题.
+我们可以在每一个组件和页面中新建一个 index.ts 文件,作为我们的统一导出文件夹,然后在 components 和 pages 文件夹下新建一个 index.ts 文件,作为每一个小文件夹的导出文件.
+如下我们就可以轻松引入 component 和 page：
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```
+import { SignIn, SandBox } from "../pages";
+import { SideMenu, TopHeader, NewsRouter } from "../../components";
+```
+
+我们将采用 Redux Toolkit 来管理我们的全局状态,这里附上官网地址：http://cn.redux.js.org/redux-toolkit/overview/,其中有介绍相比于直接使用redux带给我们的好处
