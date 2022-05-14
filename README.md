@@ -57,3 +57,4 @@ import { SideMenu, TopHeader, NewsRouter } from "../../components";
 本项目将封装成一个组件,并在 index.tsx 中引入.
 
 安装 jwt 解码插件:`npm install jwt-decode`
+安装登录持久化插件:`npm i redux-persist`
