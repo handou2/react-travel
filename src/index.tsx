@@ -7,6 +7,8 @@ import "./i18n/configs";
 import { Provider } from "react-redux";
 import store from "./redux/store";
 import axios from "axios";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 axios.defaults.headers["x-icode"] = "35402F0271949702";
 
 const root = ReactDOM.createRoot(
@@ -16,6 +18,7 @@ root.render(
   <React.StrictMode>
     <Provider store={store}>
       <App />
+      <ToastContainer position="bottom-left" pauseOnHover autoClose={5000} />
     </Provider>
   </React.StrictMode>
 );

@@ -49,3 +49,11 @@ import { SideMenu, TopHeader, NewsRouter } from "../../components";
 ```
 
 我们将采用 Redux Toolkit 来管理我们的全局状态,这里附上官网地址：http://cn.redux.js.org/redux-toolkit/overview/,其中有介绍相比于直接使用redux带给我们的好处
+
+关于 toastify:
+
+这里推荐一个消息弹出提示库,地址:https://github.com/fkhadra/react-toastify.
+为了方便使用我们这里需要对 toastify 进行一些封装:npm install --save react-toastify.
+本项目将封装成一个组件,并在 index.tsx 中引入.
+
+安装 jwt 解码插件:`npm install jwt-decode`

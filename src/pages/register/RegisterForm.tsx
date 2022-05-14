@@ -3,6 +3,7 @@ import { Form, Input, Button, Checkbox } from "antd";
 import styles from "./RegisterForm.module.scss";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { NotifyError, NotifySuccess } from "../../components";
 
 const layout = {
   labelCol: { span: 8 },
@@ -14,12 +15,17 @@ const tailLayout = {
 export const RegisterForm = () => {
   const navigate = useNavigate();
   const onFinish = async (values: any) => {
-    await axios.post("http://123.56.149.216:8080/auth/register", {
-      email: values.username,
-      password: values.password,
-      comfirm: values.comfirm,
-    });
-    navigate("/signIn/");
+    try {
+      await axios.post("http://123.56.149.216:8080/auth/register", {
+        email: values.username,
+        password: values.password,
+        confirmPassword: values.confirm,
+      });
+      NotifySuccess("注册成功！");
+      navigate("/signIn/");
+    } catch (error: any) {
+      NotifyError("注册失败！");
+    }
   };
 
   const onFinishFailed = (errorInfo: any) => {
@@ -37,7 +43,15 @@ export const RegisterForm = () => {
       <Form.Item
         label="Username"
         name="username"
-        rules={[{ required: true, message: "Please input your username!" }]}
+        rules={[
+          { required: true, message: "Please input your username!" },
+          {
+            pattern:
+              /^[a-zA-Z0-9_.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*\.[a-zA-Z0-9]{2,6}$/,
+
+            message: "邮箱格式不正确",
+          },
+        ]}
       >
         <Input />
       </Form.Item>
@@ -51,11 +65,11 @@ export const RegisterForm = () => {
       </Form.Item>
 
       <Form.Item
-        label="Comfirm Password"
-        name="comfirm"
+        label="Confirm Password"
+        name="confirm"
         hasFeedback
         rules={[
-          { required: true, message: "Please input your password!" },
+          { required: true, message: "Please input your confirm password!" },
           ({ getFieldValue }) => ({
             validator(_, value) {
               if (!value || getFieldValue("password") === value) {
@@ -68,12 +82,8 @@ export const RegisterForm = () => {
       >
         <Input.Password />
       </Form.Item>
-      <Form.Item
-        {...tailLayout}
-        name="remember"
-        valuePropName="checked"
-        wrapperCol={{ offset: 8, span: 16 }}
-      >
+
+      <Form.Item {...tailLayout} name="remember" valuePropName="checked">
         <Checkbox>Remember me</Checkbox>
       </Form.Item>
 

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./Header.module.scss";
 import logo from "../../assets/logo.svg";
 import { Layout, Typography, Input, Menu, Button, Dropdown } from "antd";
@@ -12,8 +12,10 @@ import {
   changeLanguageActionCreator,
 } from "../../redux/language/languageActions";
 import { useTranslation } from "react-i18next";
-interface State {
-  language: "zh" | "en";
+import jwt_decode, { JwtPayload as DefaultJwtPayload } from "jwt-decode";
+import { userSlice } from "../../redux/user/slice";
+interface JwtPayload extends DefaultJwtPayload {
+  username: string;
 }
 export const Header = () => {
   const navigate = useNavigate();
@@ -22,6 +24,15 @@ export const Header = () => {
   const languageList = useSelector((state) => state.language.languageList);
   const dispatch = useDispatch();
   const { t } = useTranslation();
+  const jwt = useSelector((s) => s.user.token);
+  const [username, setUsername] = useState("");
+
+  useEffect(() => {
+    if (jwt) {
+      const token = jwt_decode<JwtPayload>(jwt);
+      setUsername(token.username);
+    }
+  }, [jwt]);
   const menuClickHandler = (e) => {
     if (e.key === "new") {
       dispatch(addLanguageActionCreator("新语言", "new_lang"));
@@ -41,6 +52,10 @@ export const Header = () => {
   };
   const navigateToSearch = (keywords: any) => {
     navigate(`/search/${keywords}`);
+  };
+  const onLogout = () => {
+    dispatch(userSlice.actions.logOut());
+    navigate("/");
   };
   // storeState.language
   return (
@@ -67,19 +82,30 @@ export const Header = () => {
             >
               {language === "zh" ? "中文" : "English"}
             </Dropdown.Button>
-            <div className={styles["button-group"]}>
-              <Button
-                onClick={() => navigateToRegister()}
-                className={styles.button}
-              >
-                {" "}
-                {t("header.register")}
-              </Button>
-              <Button onClick={() => navigateToSignIn()}>
-                {" "}
-                {t("header.signin")}
-              </Button>
-            </div>
+            {jwt ? (
+              <div className={styles["button-group"]}>
+                <span>
+                  {t("header.welcome")}
+                  <Typography.Text>{username}</Typography.Text>
+                </span>
+                <Button>{t("header.shoppingCart")}</Button>
+                <Button onClick={onLogout}>{t("header.signOut")}</Button>
+              </div>
+            ) : (
+              <div className={styles["button-group"]}>
+                <Button
+                  onClick={() => navigateToRegister()}
+                  className={styles.button}
+                >
+                  {" "}
+                  {t("header.register")}
+                </Button>
+                <Button onClick={() => navigateToSignIn()}>
+                  {" "}
+                  {t("header.signin")}
+                </Button>
+              </div>
+            )}
           </div>
         </div>
         <Layout.Header className={styles["main-header"]}>

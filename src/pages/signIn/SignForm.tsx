@@ -18,7 +18,8 @@ export const SignForm = () => {
   const loading = useSelector((state) => state.user.loading);
   const error = useSelector((state) => state.user.error);
   const jwt = useSelector((state) => state.user.token);
-
+  // jwt的优点:无状态,简单,方便,支持分布式部署 采用非对称加密,token安全性高
+  // jwt的缺点:无状态,token一发布则无法取消 明文传递token安全性低（使用https可以解决）
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -28,12 +29,12 @@ export const SignForm = () => {
     }
   }, [jwt]);
 
-  const onFinish = (values) => {
-    // dispatch();
-    // signIn({
-    //   email: values.username,
-    //   password: values.password,
-    // })
+  const onFinish = (values:any) => {
+    dispatch(signIn({
+      email: values.username,
+      password: values.password,
+    }));
+    
   };
 
   const onFinishFailed = (errorInfo: any) => {};
@@ -49,7 +50,15 @@ export const SignForm = () => {
       <Form.Item
         label="Username"
         name="username"
-        rules={[{ required: true, message: "Please input your username!" }]}
+        rules={[
+          { required: true, message: "Please input your username!" },
+          {
+            pattern:
+              /^[a-zA-Z0-9_.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*\.[a-zA-Z0-9]{2,6}$/,
+
+            message: "邮箱格式不正确",
+          },
+        ]}
       >
         <Input />
       </Form.Item>
