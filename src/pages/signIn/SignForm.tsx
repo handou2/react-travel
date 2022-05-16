@@ -29,12 +29,13 @@ export const SignForm = () => {
     }
   }, [jwt]);
 
-  const onFinish = (values:any) => {
-    dispatch(signIn({
-      email: values.username,
-      password: values.password,
-    }));
-    
+  const onFinish = (values: any) => {
+    dispatch(
+      signIn({
+        email: values.username,
+        password: values.password,
+      })
+    );
   };
 
   const onFinishFailed = (errorInfo: any) => {};

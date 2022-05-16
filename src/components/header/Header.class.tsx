@@ -38,11 +38,11 @@ class HeaderComponnet extends React.Component<
     ReturnType<typeof mapDispatchToProps>
 > {
   handleStoreChange = () => {
-    const storeState = store.getState();
-    this.setState({
-      language: storeState.language.language,
-      languageList: storeState.language.languageList,
-    });
+    // const storeState = store.getState();
+    // this.setState({
+    //   language: storeState.language.language,
+    //   languageList: storeState.language.languageList,
+    // });
   };
   menuClickHandler = (e) => {
     if (e.key === "new") {

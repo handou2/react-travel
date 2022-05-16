@@ -28,9 +28,6 @@ import {
 
 const { RangePicker } = DatePicker;
 
-// interface MatchParams{
-//   touristRouteId:string
-// }
 export const DetailPage = () => {
   const loading = useSelector((state) => state.productDetail.loading);
   const error = useSelector((state) => state.productDetail.error);
@@ -38,7 +35,7 @@ export const DetailPage = () => {
   const { touristRouteId } = useParams<string>();
   const dispatch = useDispatch();
   useEffect(() => {
-    // dispatch(getProductDetail(touristRouteId))
+    dispatch(getProductDetail(touristRouteId));
   }, []);
   if (loading) {
     return (
