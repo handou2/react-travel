@@ -10,7 +10,7 @@ import {
   ShoppingCartPage,
 } from "./pages";
 import NotFound from "./pages/NotFound";
-import { useSelector } from "react-redux";
+import { useSelector } from "./redux/hooks";
 import { useDispatch } from "react-redux";
 import { getShoppingCart } from "./redux/shoppingCart/slice";
 

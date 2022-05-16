@@ -10,3 +10,5 @@ export * from "./productIntro";
 export * from "./sideMenu";
 export * from "./Notify";
 export * from "./paymentCard";
+export * from "./paymentForm";
+export * from "./checkOutCard";
