@@ -58,3 +58,15 @@ import { SideMenu, TopHeader, NewsRouter } from "../../components";
 
 安装 jwt 解码插件:`npm install jwt-decode`
 安装登录持久化插件:`npm i redux-persist`
+这是一个信用卡显示效果的组件:`npm i react-credit-cards`
+
+网站的测试和部署:
+静态服务器:
+`npm install -g serve`  
+
+`npm run build`   
+
+`serve -s build -l 123`(绑定端口123)  
+
+容器化部署:  
+

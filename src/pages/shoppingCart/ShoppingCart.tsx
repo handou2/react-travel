@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./ShoppingCart.module.css";
+import styles from "./ShoppingCart.module.scss";
 import { MainLayout } from "../../layouts/mainLayout";
 import { Row, Col, Affix } from "antd";
 import { ProductList, PaymentCard } from "../../components";
