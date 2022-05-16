@@ -1,18 +1,17 @@
 import React from "react";
 import {
-  Footer,
   Header,
-  SideMenu,
+  Footer,
   Carousel,
-  BusinessPartners,
+  SideMenu,
   ProductCollection,
+  BusinessPartners,
 } from "../../components";
-import styles from "./HomePage.module.scss";
+import { Row, Col, Typography, Spin } from "antd";
 import sideImage from "../../assets/images/sider_2019_12-09.png";
 import sideImage2 from "../../assets/images/sider_2019_02-04.png";
 import sideImage3 from "../../assets/images/sider_2019_02-04-2.png";
-//行布局和列布局
-import { Row, Col, Typography, Spin } from "antd";
+import styles from "./HomePage.module.css";
 import { withTranslation, WithTranslation } from "react-i18next";
 import axios from "axios";
 import { connect } from "react-redux";
@@ -27,6 +26,7 @@ const mapStateToProps = (state: RootState) => {
     productList: state.recommendProducts.productList,
   };
 };
+
 const mapDispatchToProps = (dispatch) => {
   return {
     giveMeData: () => {
@@ -34,14 +34,18 @@ const mapDispatchToProps = (dispatch) => {
     },
   };
 };
+
 type PropsType = WithTranslation &
   ReturnType<typeof mapStateToProps> &
   ReturnType<typeof mapDispatchToProps>;
+
 class HomePageComponent extends React.Component<PropsType> {
   componentDidMount() {
     this.props.giveMeData();
   }
+
   render() {
+    // console.log(this.props.t)
     const { t, productList, loading, error } = this.props;
     if (loading) {
       return (
@@ -102,6 +106,7 @@ class HomePageComponent extends React.Component<PropsType> {
     );
   }
 }
+
 export const HomePage = connect(
   mapStateToProps,
   mapDispatchToProps
