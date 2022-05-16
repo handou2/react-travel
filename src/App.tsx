@@ -7,7 +7,7 @@ import {
   RegisterPage,
   DetailPage,
   SearchPage,
-  // ShoppingCart,
+  ShoppingCartPage,
 } from "./pages";
 import NotFound from "./pages/NotFound";
 import { useSelector } from "react-redux";
@@ -25,13 +25,13 @@ const PrivateRoute = ({ component, isAuthenticated, ...rest }) => {
   // return <Route element={routeComponent} {...rest}/>
 };
 function App() {
-  // const jwt = useSelector((s) => s.user.token);
+  const jwt = useSelector((s: any) => s.user.token);
   const dispatch = useDispatch();
-  // useEffect(() => {
-  //   if(jwt){
-  //     dispatch(getShoppingCart(jwt))
-  //   }
-  // }, [jwt]);
+  useEffect(() => {
+    if (jwt) {
+      dispatch(getShoppingCart(jwt));
+    }
+  }, [jwt]);
   return (
     <div className={styles.App}>
       <BrowserRouter>
@@ -41,7 +41,7 @@ function App() {
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/detail/:touristRouteId" element={<DetailPage />} />
           <Route path="/search/:keywords?" element={<SearchPage />} />
-          {/* <Route path="/shoppingCart" element={<ShoppingCart />} /> */}
+          <Route path="/shoppingCart" element={<ShoppingCartPage />} />
           {/* <PrivateRoute 
           path='/shoppingCart' element={<ShoppingCart/} /> */}
           <Route path="*" element={<NotFound />} />
