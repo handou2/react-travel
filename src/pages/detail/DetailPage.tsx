@@ -41,6 +41,7 @@ export const DetailPage = () => {
   const shoppingCartLoading = useSelector((s) => s.shoppingCart.loading);
 
   useEffect(() => {
+    // @ts-ignore
     dispatch(getProductDetail(touristRouteId));
   }, []);
   if (loading) {
@@ -86,6 +87,7 @@ export const DetailPage = () => {
                 loading={shoppingCartLoading}
                 onClick={() => {
                   dispatch(
+                    // @ts-ignore
                     addShoppingCartItem({ jwt, touristRouteId: product.id })
                   );
                 }}

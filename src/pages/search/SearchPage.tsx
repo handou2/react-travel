@@ -18,12 +18,14 @@ export const SearchPage = () => {
   const dispatch = useDispatch();
   const location = useLocation();
 
-  // useEffect(()=>{
-  //   dispatch(searchProduct({nextPage:1, pageSize: 10, keywords}))
-  // },[location])
+  useEffect(() => {
+    // @ts-ignore
+    dispatch(searchProduct({ nextPage: 1, pageSize: 10, keywords }));
+  }, [location]);
 
   const onPageChange = (nextPage, pageSize) => {
-    // dispatch(searchProduct({nextPage, pageSize, keywords}))
+    // @ts-ignore
+    dispatch(searchProduct({ nextPage, pageSize, keywords }));
   };
 
   if (loading) {

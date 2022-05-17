@@ -6,8 +6,8 @@ import { useSelector } from "../../redux/hooks";
 import { useDispatch } from "react-redux";
 import { placeOrder } from "../../redux/order/slice";
 
-export const PlaceOrderPage = () => {
-  const jwt = useSelector((s) => s.user.token);
+export const PlaceOrderPage: React.FC = (props) => {
+  const jwt = useSelector((s) => s.user.token) as string;
   const loading = useSelector((s) => s.order.loading);
   const order = useSelector((s) => s.order.currentOrder);
   const dispatch = useDispatch();
@@ -23,6 +23,7 @@ export const PlaceOrderPage = () => {
             loading={loading}
             order={order}
             onCheckout={() => {
+              // @ts-ignore
               dispatch(placeOrder({ jwt, orderId: order.id }));
             }}
           />

@@ -5,13 +5,19 @@ import { Row, Col, Affix } from "antd";
 import { ProductList, PaymentCard } from "../../components";
 import { useSelector } from "../../redux/hooks";
 import { useDispatch } from "react-redux";
-import { clearShoppingCartItem } from "../../redux/shoppingCart/slice";
+import {
+  clearShoppingCartItem,
+  checkout,
+} from "../../redux/shoppingCart/slice";
+import { useNavigate } from "react-router-dom";
 
-export const ShoppingCartPage = (props) => {
+export const ShoppingCartPage: React.FC = (props) => {
   const loading = useSelector((s) => s.shoppingCart.loading);
   const shoppingCartItems = useSelector((s) => s.shoppingCart.items);
-  const jwt = useSelector((s) => s.user.token);
+  const jwt = useSelector((s) => s.user.token) as string;
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   return (
     <MainLayout>
       <Row>
@@ -37,9 +43,17 @@ export const ShoppingCartPage = (props) => {
                       (s.discountPresent ? s.discountPresent : 1)
                   )
                   .reduce((a, b) => a + b, 0)}
-                onCheckout={() => {}}
+                onCheckout={() => {
+                  if (shoppingCartItems.length <= 0) {
+                    return;
+                  }
+                  // @ts-ignore
+                  dispatch(checkout(jwt));
+                  navigate("/placeOrder");
+                }}
                 onShoppingCartClear={() => {
                   dispatch(
+                    // @ts-ignore
                     clearShoppingCartItem({
                       jwt,
                       itemIds: shoppingCartItems.map((s) => s.id),

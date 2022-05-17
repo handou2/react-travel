@@ -8,6 +8,7 @@ import {
   DetailPage,
   SearchPage,
   ShoppingCartPage,
+  PlaceOrderPage,
 } from "./pages";
 import NotFound from "./pages/NotFound";
 import { useSelector } from "./redux/hooks";
@@ -29,6 +30,7 @@ function App() {
   const dispatch = useDispatch();
   useEffect(() => {
     if (jwt) {
+      // @ts-ignore
       dispatch(getShoppingCart(jwt));
     }
   }, [jwt]);
@@ -42,6 +44,7 @@ function App() {
           <Route path="/detail/:touristRouteId" element={<DetailPage />} />
           <Route path="/search/:keywords?" element={<SearchPage />} />
           <Route path="/shoppingCart" element={<ShoppingCartPage />} />
+          <Route path="/placeOrder" element={<PlaceOrderPage />} />
           {/* <PrivateRoute 
           path='/shoppingCart' element={<ShoppingCart/} /> */}
           <Route path="*" element={<NotFound />} />

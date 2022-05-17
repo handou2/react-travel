@@ -31,6 +31,7 @@ export const SignForm = () => {
 
   const onFinish = (values: any) => {
     dispatch(
+      // @ts-ignore
       signIn({
         email: values.username,
         password: values.password,
