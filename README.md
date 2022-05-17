@@ -38,9 +38,9 @@ npm install react-router-dom
 
 安装 axios: `npm i axios.`
 
-这里有个小技巧:  
-component 和 page,为了避免引入组件和页面造成过多杂乱代码的问题.
-我们可以在每一个组件和页面中新建一个 index.ts 文件,作为我们的统一导出文件夹,然后在 components 和 pages 文件夹下新建一个 index.ts 文件,作为每一个小文件夹的导出文件.
+这里有个小技巧:   
+component 和 page,为了避免引入组件和页面造成过多杂乱代码的问题.  
+我们可以在每一个组件和页面中新建一个 index.ts 文件,作为我们的统一导出文件夹,然后在 components 和 pages 文件夹下新建一个 index.ts 文件,作为每一个小文件夹的导出文件.  
 如下我们就可以轻松引入 component 和 page：
 
 ```
@@ -52,19 +52,25 @@ import { SideMenu, TopHeader, NewsRouter } from "../../components";
 
 关于 toastify:
 
-这里推荐一个消息弹出提示库,地址:https://github.com/fkhadra/react-toastify.
-为了方便使用我们这里需要对 toastify 进行一些封装:npm install --save react-toastify.
+这里推荐一个消息弹出提示库,地址:https://github.com/fkhadra/react-toastify.  
+
+为了方便使用我们这里需要对 toastify 进行一些封装:`npm install --save react-toastify`.  
+
 本项目将封装成一个组件,并在 index.tsx 中引入.
 
-安装 jwt 解码插件:`npm install jwt-decode`
-安装登录持久化插件:`npm i redux-persist`
+安装 jwt 解码插件:`npm install jwt-decode`  
+
+安装登录持久化插件:`npm i redux-persist`  
+
 这是一个信用卡显示效果的组件:`npm i react-credit-cards`
 
-网站的测试和部署:
-静态服务器:
+网站的测试和部署:  
+
+静态服务器:  
+
 `npm install -g serve`  
 
-`npm run build`   
+npm run build`   
 
 `serve -s build -l 123`(绑定端口123)  
 
