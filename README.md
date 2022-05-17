@@ -75,3 +75,6 @@ npm run build`
 `serve -s build -l 123`(绑定端口123)  
 
 项目目前已部署到:http://www.nemo.hanpigpig.top/ (开梯子会请求失败哦)  
+
+
+目前还有一点问题:私有路由的问题,之后会更新解决  
