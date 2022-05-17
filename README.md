@@ -68,5 +68,4 @@ import { SideMenu, TopHeader, NewsRouter } from "../../components";
 
 `serve -s build -l 123`(绑定端口123)  
 
-容器化部署:  
-
+项目目前已部署到:http://www.nemo.hanpigpig.top/ (开梯子会请求失败哦)  
