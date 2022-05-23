@@ -13,6 +13,7 @@ import {
 } from "../../redux/language/languageActions";
 import { useTranslation } from "react-i18next";
 import jwt_decode, { JwtPayload as DefaultJwtPayload } from "jwt-decode";
+import { message } from "antd";
 import { userSlice } from "../../redux/user/slice";
 interface JwtPayload extends DefaultJwtPayload {
   username: string;
@@ -52,7 +53,11 @@ export const Header = () => {
     navigate(`/`);
   };
   const navigateToSearch = (keywords: any) => {
-    navigate(`/search/${keywords}`);
+    if (keywords) {
+      navigate(`/search/${keywords}`);
+    } else {
+      message.error("请输入关键词搜索");
+    }
   };
   const onLogout = () => {
     dispatch(userSlice.actions.logOut());

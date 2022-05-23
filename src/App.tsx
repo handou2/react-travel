@@ -42,7 +42,7 @@ function App() {
           <Route path="/signIn" element={<SignIn />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/detail/:touristRouteId" element={<DetailPage />} />
-          <Route path="/search/:keywords?" element={<SearchPage />} />
+          <Route path="/search/:keywords" element={<SearchPage />} />
           <Route path="/shoppingCart" element={<ShoppingCartPage />} />
           <Route path="/placeOrder" element={<PlaceOrderPage />} />
           {/* <PrivateRoute 
