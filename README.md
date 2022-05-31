@@ -74,4 +74,4 @@ npm run build`
 
 `serve -s build -l 123`(绑定端口 123)
 
-目前还有一点问题:私有路由的问题,之后会更新解决
+项目在线浏览：http://nemomo.wzhyuming.top/
