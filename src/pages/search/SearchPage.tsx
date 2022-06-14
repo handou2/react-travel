@@ -10,7 +10,7 @@ import { MainLayout } from "../../layouts/mainLayout";
 
 export const SearchPage = () => {
   const { keywords } = useParams<string>();
-
+ 
   const loading = useSelector((state) => state.productSearch.loading);
   const error = useSelector((s) => s.productSearch.error);
   const pagination = useSelector((s) => s.productSearch.pagination);

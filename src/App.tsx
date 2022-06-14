@@ -11,23 +11,17 @@ import {
   PlaceOrderPage,
 } from "./pages";
 import NotFound from "./pages/NotFound";
-import { useSelector } from "./redux/hooks";
-import { useDispatch } from "react-redux";
+import { Navigate } from "react-router-dom";
+import { useSelector, useAppDispatch } from "./redux/hooks";
 import { getShoppingCart } from "./redux/shoppingCart/slice";
 
-const PrivateRoute = ({ component, isAuthenticated, ...rest }) => {
-  const routeComponent = (props) => {
-    isAuthenticated ? (
-      React.createElement(component, props)
-    ) : (
-      <Link to={{ pathname: "/signIn" }} />
-    );
-  };
-  // return <Route element={routeComponent} {...rest}/>
+const PrivateRoute = ({ children }) => {
+  const jwt = useSelector((s) => s.user.token);
+  return jwt ? children : <Navigate to="/signIn" />;
 };
 function App() {
   const jwt = useSelector((s: any) => s.user.token);
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   useEffect(() => {
     if (jwt) {
       // @ts-ignore
@@ -43,10 +37,22 @@ function App() {
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/detail/:touristRouteId" element={<DetailPage />} />
           <Route path="/search/:keywords" element={<SearchPage />} />
-          <Route path="/shoppingCart" element={<ShoppingCartPage />} />
-          <Route path="/placeOrder" element={<PlaceOrderPage />} />
-          {/* <PrivateRoute 
-          path='/shoppingCart' element={<ShoppingCart/} /> */}
+          <Route
+            path="/shoppingCart"
+            element={
+              <PrivateRoute>
+                <ShoppingCartPage />
+              </PrivateRoute>
+            }
+          />{" "}
+          <Route
+            path="/placeOrder"
+            element={
+              <PrivateRoute>
+                <PlaceOrderPage />
+              </PrivateRoute>
+            }
+          />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
